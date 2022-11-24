@@ -1,0 +1,8 @@
+VPATH = $(bin_path)
+
+objects = $(sources:%.asm=%_asm.o)
+objects_with_path = $(sources:%.asm=$(bin_path)/%_asm.o)
+sources = $(sort $(filter-out $(sources_to_filter_out), $(shell ls *.asm)))
+
+.PHONY : all
+all : $(sort $(objects) $(executables))

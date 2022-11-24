@@ -1,0 +1,18 @@
+SHELL = /bin/bash
+
+%_asm.o : %.asm
+	@echo creating $@
+	@$(NASM) $(NASM_FLAGS) $< -o $(bin_path)/$@
+
+%.o : %.c
+	@echo creating $@
+	@$(CC) $(CC_FLAGS) $(CPP_FLAGS) $< -o $(bin_path)/$@
+
+# The sed regular expression substitutes the "object file.o" by "object file.o", the target and the makefiles.
+# Therefore, the string "main.o : include.h" becomes "main.o ../makefile ../general_makefile makefile : include.h".
+%.d : %.c
+	@echo creating $@
+	@$(RM) $(RM_FLAGS) $(dep_path)/$@.tmp
+	@$(CC) -MM $(CPP_FLAGS) $< > $(dep_path)/$@.tmp
+	@$(SED) 's,\($(basename $(@F))\)\.o[ :]*,\1.o $(basename $(@F)).d : $(compilation_root_path)/makefile $(compilation_root_path)/c_general_makefile $(compilation_root_path)/general_makefile makefile ,g' < $(dep_path)/$@.tmp > $(dep_path)/$@
+	@$(RM) $(RM_FLAGS) $(dep_path)/$@.tmp

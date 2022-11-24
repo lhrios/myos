@@ -1,0 +1,16 @@
+aux
+backup
+bochsout.txt
+.cproject
+docs
+.externalToolBuilders
+*.img
+.project
+.settings
+target
+third_party
+**/NOTES
+**/TODO
+resources/hard_disk_static_files/bc
+resources/hard_disk_static_files/data
+resources/hard_disk_static_files/syntax

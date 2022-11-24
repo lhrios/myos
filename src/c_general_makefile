@@ -1,0 +1,15 @@
+CPP_FLAGS += -I $(include_path) -I $(include_path)/standard_library -I $(include_path)/myos_standard_library
+VPATH := $(bin_path) $(dep_path)
+
+dependences = $(sources:%.c=%.d)
+dependences_with_path = $(sources:%.c=$(dep_path)/%.d)
+include_path := ../$(include_path)
+objects = $(sources:%.c=%.o)
+objects_with_path = $(sources:%.c=$(bin_path)/%.o)
+sources = $(shell find . -iname '*.c')
+sources := $(filter-out $(sources_to_remove),$(sources))
+
+.PHONY : all
+all : $(sort $(objects) $(executables))
+
+-include $(sort $(dependences))
