@@ -68,6 +68,7 @@ $(executables) : % : %.o $(standard_library) $(executable_common_dependency_obje
 		$(standard_library) \
 		--oformat=binary -o $(bin_path)/executables/$(@F)
 
+$(shell mkdir -p $(bin_path)/executables)
 VPATH := $(VPATH) $(bin_path)/executables \
 	$(bin_path)/assembly \
 	$(bin_path)/myos_standard_library \

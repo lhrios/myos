@@ -13,7 +13,9 @@ By being a Unix-like kernel, it's capable of suportting the execution of the fol
 - [ncurses library](https://invisible-island.net/ncurses/announce.html) - version 6.2
 
 \* In some cases not all components or functionalities of the software are supported by MyOS kernel.		
-		
+
+There is a [video](https://youtu.be/AF_JmZHEDTg) that demonstrates part of the previous software listed above having their execution supported by MyOS.
+
 ## Building and running
 
 In order to build and run MyOS, the following software is required:
